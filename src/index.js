@@ -1,6 +1,9 @@
-document.addEventListener("DOMContentLoaded", () => {
+//document.addEventListener("DOMContentLoaded", () => {
   // your code here
-  const textbox = document.getElementById("create-task-form");
+  
+//});
+
+const textbox = document.getElementById("create-task-form");
 textbox.addEventListener("submit", (e) => {
 	e.preventDefault();
 	buildToDo(e.target.new_task_description.value);
@@ -25,4 +28,3 @@ function buildToDo(e_target_new_task_description_value) {
 		return list.target.parentNode.remove();
 	}
 }
-});
