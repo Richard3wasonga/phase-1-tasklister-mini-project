@@ -1,28 +1,28 @@
 document.addEventListener("DOMContentLoaded", () => {
   // your code here
-  const taskList = new TaskList();
+  const textbox = document.getElementById("create-task-form");
+textbox.addEventListener("submit", (e) => {
+	e.preventDefault();
+	buildToDo(e.target.new_task_description.value);
+});
 
-  const newTaskForm = document.getElementById("create-task-form");
-  const newTaskDescription = document.getElementById("new-task-description");
-  const newTaskPriority = document.getElementById("new-task-priority");
+function buildToDo(e_target_new_task_description_value) {
+	const list = document.createElement("li");
+	const button = document.createElement("button");
 
-  const taskUl = document.getElementById("tasks");
+	list.textContent = `${e_target_new_task_description_value}  `;
 
-  const renderApp = () => (taskUl.innerHTML = taskList.renderTasks());
-  
+	button.textContent = "x";
 
-  newTaskForm.addEventListener("submit", (e) => {
-    e.preventDefault();
-    taskList.createNewTask(newTaskDescription.value);
-   
-    e.target.reset();
-    renderApp();
-  });
+	const unordered_list = document.getElementById("tasks");
 
-  taskUl.addEventListener("click", (e) => {
-    if (e.target.nodeName === "BUTTON") {
-      taskList.deleteTask(e.target.dataset.description);
-      renderApp();
-    }
-  });
+	unordered_list.appendChild(list);
+	list.appendChild(button);
+
+	button.addEventListener("click", deleteToDoItem);
+
+	function deleteToDoItem(list) {
+		return list.target.parentNode.remove();
+	}
+}
 });
