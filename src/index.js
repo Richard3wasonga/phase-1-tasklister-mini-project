@@ -9,7 +9,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const input = document.querySelector("#new-task-description");
     const task = input.value;
     const taskItem = document.createElement("li");
-    taskItem.innerHTML = task;
+    taskItem.textContent = task;
     taskList.appendChild(taskItem);
 
     form.reset();
